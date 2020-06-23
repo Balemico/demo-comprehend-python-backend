@@ -18,6 +18,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 parser = reqparse.RequestParser()
 
 
+class Welcome(Resource):
+    def get(self):
+        return {'status': 'ok'}
+
+
 class Upload(Resource):
     def post(self):
         now = datetime.now()
@@ -129,6 +134,7 @@ class Entities(Resource):
         return result["Entities"]
 
 
+api.add_resource(Welcome, '/api/')
 api.add_resource(Upload, '/api/upload/')
 api.add_resource(Language, '/api/language/')
 api.add_resource(Sentiment, '/api/sentiment/')
