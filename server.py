@@ -7,7 +7,6 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from datetime import datetime
 
-
 import time
 
 app = Flask(__name__)

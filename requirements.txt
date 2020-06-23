@@ -1,0 +1,6 @@
+json
+boto3
+PyPDF2
+flask_restful
+flask
+flask_cors
