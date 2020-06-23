@@ -34,7 +34,7 @@ class Upload(Resource):
         for page in pdfReader.pages:
             text = text + " " + page.extractText()
 
-        print(text)
+        # print(text)
 
         comprehend = boto3.client(
             service_name='comprehend', region_name='eu-central-1')
@@ -103,7 +103,7 @@ class Sentiment(Resource):
         if args["text"] != "":
             text = args["text"]
 
-        print('Calling DetectSentiment with text'+text)
+        print('Calling DetectSentiment with text '+text)
         result = comprehend.detect_sentiment(Text=text, LanguageCode='en')
         print()
         print('End of DetectSentiment\n')
@@ -123,9 +123,9 @@ class Entities(Resource):
         if args["text"] != "":
             text = args["text"]
 
-        print('Calling DetectKeyPhrases')
+        print('Calling DetectEntities')
         result = comprehend.detect_entities(Text=text, LanguageCode='en')
-        print('End of DetectKeyPhrases\n')
+        print('End of DetectEntities\n')
         return result["Entities"]
 
 
@@ -135,5 +135,4 @@ api.add_resource(Sentiment, '/api/sentiment/')
 api.add_resource(Entities, '/api/entities/')
 
 if __name__ == '__main__':
-
     app.run(debug=True)
